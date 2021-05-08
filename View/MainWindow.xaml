@@ -1,0 +1,129 @@
+﻿<Window x:Class="Converter.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Converter"
+        xmlns:viewModel="clr-namespace:Converter.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ComboBox ItemsSource="{Binding Valute.Valute}"
+                      SelectedValue="{Binding FirstSelectedValute}"
+                      SelectedIndex="0"
+                      DisplayMemberPath="Name"
+                      FontSize="20"
+                      Grid.Row="0" 
+                      SelectionChanged="ComboBox_SelectionChanged" />
+            <TextBox x:Name="firstVatute" Text="{Binding FirstValute}" 
+                     FontSize="20"
+                     IsReadOnly="{Binding IsReadOnly}" 
+                     Margin="0,34.8,-1,-1" Grid.Row="1"/>
+            <TextBox x:Name="TextBox1" HorizontalAlignment="Left" 
+                     Height="41" Margin="0,183.8,0,-144.8" 
+                     Grid.Row="1" TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="182" FontSize="20"/>
+            <Label Content="{Binding FirstCode}" 
+                   HorizontalAlignment="Left" 
+                   Margin="0,150.8,0,-97.8" Grid.Row="1" 
+                   VerticalAlignment="Top" 
+                   RenderTransformOrigin="0.128,0.054" 
+                   Width="64" FontSize="20"/>
+            <Label Content="{Binding FirstCode}" 
+                HorizontalAlignment="Left" 
+                Margin="0,150.8,0,-96.4" Grid.Row="1" 
+                VerticalAlignment="Top" 
+                RenderTransformOrigin="0.128,0.054" 
+                Width="64" FontSize="20"/>
+            <Label x:Name="firstNominal" 
+                   Content="{Binding FirstNominal}" 
+                   HorizontalAlignment="Left" 
+                   Margin="10,3.8,0,0" Grid.Row="1" 
+                   VerticalAlignment="Top" Width="40" FontSize="20"/>
+            <Label Content="{Binding FirstCode}"
+                   HorizontalAlignment="Left" 
+                   Margin="71,3.8,0,0" 
+                   VerticalAlignment="Top" 
+                   FontSize="20" Grid.Row="1"/>
+            <Label Content="=" HorizontalAlignment="Left" 
+                   Margin="132,3.8,0,0" Grid.Row="1" 
+                   VerticalAlignment="Top" FontSize="20" 
+                   RenderTransformOrigin="7.059,0.561"/>
+        </Grid>
+        <Grid Grid.Column="1" 
+              VerticalAlignment="Top" Margin="10">
+            <DatePicker SelectedDate="{Binding SelectedDate}"/>
+        </Grid>
+
+        <Grid Grid.Column="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ComboBox ItemsSource="{Binding Valute.Valute}"
+                      SelectedValue="{Binding SecondSelectedValute}"
+                      SelectedIndex="0"
+                      DisplayMemberPath="Name"
+                      FontSize="20"
+                      Grid.Row="0" />
+            <TextBox x:Name="secondValute" Text="{Binding SecondValute }" 
+                     FontSize="20" Margin="0,31.8,-1,-0.8" Grid.Row="1"/>
+            <TextBox x:Name="TextBox2"
+                     HorizontalAlignment="Left" 
+                     Height="41" Margin="0,179.8,0,-146.4" 
+                     Grid.Row="1" TextWrapping="Wrap" 
+                     Text=" " VerticalAlignment="Top" 
+                     Width="182" IsEnabled="False" 
+                     FontSize="20"/>
+            <Label Content="{Binding SecondCode}" 
+                   HorizontalAlignment="Left" 
+                   Margin="0,147.8,0,-99.4" Grid.Row="1" 
+                   VerticalAlignment="Top" 
+                   RenderTransformOrigin="0.128,0.054" 
+                   Width="46" FontSize="20"/>
+            <Label x:Name="secondNominal" 
+                   Content="{Binding SecondNominal}" 
+                   HorizontalAlignment="Left" 
+                   Margin="10,3.8,0,0" Grid.Row="1" 
+                   VerticalAlignment="Top" FontSize="20" Width="38"/>
+            <Label Content="{Binding SecondCode}" 
+                   HorizontalAlignment="Left" 
+                   Margin="76,3.8,0,0" Grid.Row="1"
+                   VerticalAlignment="Top" FontSize="20"/>
+            <Label Content="=" 
+                   HorizontalAlignment="Left" 
+                   Margin="133,3.8,0,0" Grid.Row="1" 
+                   VerticalAlignment="Top" FontSize="20"/>
+        </Grid>
+        <Button Content=" " 
+                Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Margin="40,231,0,0" 
+                VerticalAlignment="Top" 
+                Width="51" 
+                BorderBrush="#FF121111" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="exchange 1.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content=" RUB" Grid.Column="1" 
+               HorizontalAlignment="Left" 
+               Margin="40,81,0,0" 
+               VerticalAlignment="Top" 
+               Width="51" Height="35" FontSize="20"/>
+    </Grid>
+</Window>
